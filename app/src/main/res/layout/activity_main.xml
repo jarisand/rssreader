@@ -2,52 +2,86 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/gradient_background"
+    android:layout_centerHorizontal="true"
     tools:context=".MainActivity">
 
 
     <LinearLayout
+
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:id="@+id/lin1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent">
 
 
 
-        <Button
+        <ImageButton
+            android:src="@mipmap/sport2"
             android:id="@+id/tab1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tab1" />
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:onClick="sports"
+            android:background="@drawable/list_selector"
+            />
 
-        <Button
+        <ImageButton
+            android:src="@mipmap/notebook2"
             android:id="@+id/tab2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
             android:layout_alignRight="@+id/tab1"
-            android:text="TAB1" />
+            android:background="@drawable/list_selector"
+            android:onClick="it"/>
 
-        <Button
+        <ImageButton
+            android:src="@mipmap/news2"
             android:id="@+id/tab3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
             android:layout_alignRight="@+id/tab2"
+            android:background="@drawable/list_selector"
+            android:onClick="news"/>
+
+        <ImageButton
+            android:src="@mipmap/comedy2"
+            android:id="@+id/tab4"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_alignRight="@+id/tab3"
+            android:background="@drawable/list_selector"
+            android:onClick="viihde"/>
+
+        <ImageButton
+            android:src="@mipmap/coins2"
+            android:id="@+id/tab5"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_alignRight="@+id/tab3"
+            android:background="@drawable/list_selector"
+            android:onClick="finance"/>
+
+        <ImageButton
+            android:src="@mipmap/home2"
+            android:id="@+id/tab6"
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_alignRight="@+id/tab2"
+            android:background="@drawable/list_selector"
             android:text="Home"
             android:onClick="refresh"/>
 
-        <Button
-            android:id="@+id/tab4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/tab3"
-            android:text="..." />
 
     </LinearLayout>
     <LinearLayout
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/lin1">
@@ -56,6 +90,7 @@
             android:id="@+id/feed"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:autoLink="web"
             />
 
     </LinearLayout>

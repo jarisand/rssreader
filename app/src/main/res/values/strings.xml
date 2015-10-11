@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">RSSReader</string>
+    <string name="app_name">Inflammable FLARB</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="munakoiso">Munakoisooooo</string>
+    <string name="quitDialog">Suljetaan ohjelma</string>
+    <string name="quitMessage">Haluatko varmasti sulkea ohjelman?</string>
+    <string name="ok">Kyllä</string>
+    <string name="cancel">Ei</string>
 </resources>

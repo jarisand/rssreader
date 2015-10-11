@@ -28,4 +28,28 @@ public class User {
     public String getLink(int position){
         return feeds.get(position).getLink();
     }
+
+    public ArrayList<RSSItem> visited = new ArrayList<>();
+
+    public ArrayList<RSSItem> getVisited(){
+        return visited;
+    }
+
+    public String getImage(){
+        return this.getImage();
+    }
+
+    public ArrayList<RSSItem> bookmarks = new ArrayList<>();
+
+    public ArrayList<RSSItem> getBookmarks(){
+        return bookmarks;
+    }
+
+    public void addBookmarks(RSSItem rssItem){
+        bookmarks.add(rssItem);
+    }
+
+    public String getBookmarkLink(int position){
+        return bookmarks.get(position).getLink();
+    }
 }

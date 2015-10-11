@@ -4,23 +4,24 @@ package com.example.jari.rssreader;
  * Created by jari on 25/09/15.
  */
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+
+import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
-import java.util.TreeSet;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 
-public class XMLHandler {
+public class XMLHandler extends Activity {
 
     private String title = "title";
     private String link = "link";
@@ -32,6 +33,8 @@ public class XMLHandler {
     private Sources sources = new Sources();
     User user = User.getInstance();
     public volatile boolean parsingComplete = false;
+    private Bitmap bitmap;
+    private String image;
 
 
     public XMLHandler(String url) {
@@ -47,16 +50,18 @@ public class XMLHandler {
 
         try {
             event = myParser.getEventType();
-            //System.out.println(sources.sources.iterator());
 
-            while (event != XmlPullParser.END_DOCUMENT && !sources.getNext()) {
+            while (event != XmlPullParser.END_DOCUMENT) {
 
                 if (event == XmlPullParser.START_TAG) {
                     if (myParser.getName().equalsIgnoreCase("item")) {
                         insideItem = true;
-                    } else if (myParser.getName().equalsIgnoreCase("title")) {
+                    }
+                    else if (myParser.getName().equalsIgnoreCase("url")) {
+                        insideItem = true;
+                    }else if (myParser.getName().equalsIgnoreCase("title")) {
                         if (insideItem)
-                            this.title = myParser.nextText() + "\n";
+                            this.title = myParser.nextText();
                     } else if (myParser.getName().equalsIgnoreCase("link")) {
                         if (insideItem)
                             this.link = myParser.nextText() + "\n\n";
@@ -66,12 +71,12 @@ public class XMLHandler {
                     }else if (myParser.getName().equalsIgnoreCase("pubdate")) {
                         if (insideItem)
                             this.pubDate = myParser.nextText() + "\n";
-                        try{
-                            SimpleDateFormat sdf  = new SimpleDateFormat("EEE, dd MMM yyyy kk:mm:ss z");
+                        try {
+                            SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy kk:mm:ss z");
                             Date date = sdf.parse(this.pubDate);
                             long timeInMillisSinceEpoch = date.getTime();
                             this.timeInMinutesSinceEpoch = timeInMillisSinceEpoch / (60 * 1000);
-                        }catch(Exception e){
+                        } catch (Exception e) {
                             System.out.println(e);
                         }
                     }
@@ -89,15 +94,10 @@ public class XMLHandler {
             //allFeeds.addAll(getList());
             parsingComplete = true;
             System.out.println("Parsing complete");
-            //sortByDate();
-            //allFeeds.addAll(listView);
-            //System.out.println(allFeeds.size());
 
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        //for(RSSItem i:listView);
     }
 
     public void fetchXML() {
@@ -132,6 +132,20 @@ public class XMLHandler {
         });
         thread.start();
     }
+
+    /*public void bitmap(){
+        try {
+            String urlStr = "http://www.profightdb.com/img/wrestlers/thumbs-600/4d54a6c767johncena.jpg";
+            URL imageUrl = new URL(urlStr);
+            ImageView i = (ImageView)findViewById(R.id.image1);
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
+            i.setImageBitmap(bitmap);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
 }
 

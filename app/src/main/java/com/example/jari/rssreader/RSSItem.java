@@ -9,6 +9,7 @@ public class RSSItem {
     private String link;
     private String description;
     private long pubDate;
+    private String image;
 
     public RSSItem(String title, String link, String description, long pubDate){
         this.title = title;
@@ -40,6 +41,15 @@ public class RSSItem {
 
     public Long getDate(){
         return this.pubDate;
+    }
+
+    public String changeTitle(){
+        this.title = "Luettu! " + this.title;
+        return this.title;
+    }
+
+    public String getImage(){
+        return this.image;
     }
 
 

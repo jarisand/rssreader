@@ -11,6 +11,9 @@
     <item name="darkgreen" type="color">#FF669900</item>
     <item name="darkorange" type="color">#FFFF8800</item>
     <item name="darkred" type="color">#FFCC0000</item>
+    <item name="sininen" type="color">#ff2fa0ff</item>
+    <item name="alku" type="color">#5cffe2</item>
+    <item name="loppu" type="color">#ffc579</item>
 
     <integer-array name="androidcolors">
         <item>@color/blue</item>
